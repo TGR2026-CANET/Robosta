@@ -23,8 +23,12 @@ const HIGHLIGHTS = [
 
 export function TwoSidedSection() {
   return (
-    <section id="about-us" className="bg-[#F5F6F2] py-16 md:py-20">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+    <section id="about-us" className="relative overflow-hidden bg-[#F5F6F2] py-16 md:py-20">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/4 top-0 h-64 w-64 rounded-full bg-[#9EE7FF]/22 blur-3xl" />
+        <div className="absolute right-1/4 bottom-0 h-64 w-64 rounded-full bg-[#DDF5E4]/35 blur-3xl" />
+      </div>
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
         <h2 className="text-2xl font-bold text-[var(--ink)] sm:text-3xl">
           <span className="rounded-xl bg-[var(--gold)]/45 px-2.5 py-0.5">Robosta</span>{' '}
           เราเข้าใจทั้งผู้ซื้อและเกษตรกร

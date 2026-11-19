@@ -42,8 +42,12 @@ const CAPABILITIES = [
 
 export function StatsStrip() {
   return (
-    <section className="border-t border-black/[0.06] bg-[#FAFBF7] py-16 md:py-20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+    <section className="relative overflow-hidden border-t border-black/[0.06] bg-[#FAFBF7] py-16 md:py-20">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[#E8FD56]/20 blur-3xl" />
+        <div className="absolute left-0 bottom-0 h-72 w-72 rounded-full bg-[#FFD1E3]/20 blur-3xl" />
+      </div>
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
         {/* Top Single White Stats Card (Gig&Co style) */}
         <div className="text-center">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--card)] px-3 py-1 text-xs font-medium text-[var(--ink-muted)] shadow-xs">

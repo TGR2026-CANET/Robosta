@@ -1,31 +1,33 @@
-import { Play, CheckCircle2, TrendingUp } from 'lucide-react';
+import { Play, CheckCircle2, TrendingUp, Bell, Search } from 'lucide-react';
 import { LOT_DATA } from '../data/lotDemoData';
+import { IPhoneProMaxMockup } from './IPhoneProMaxMockup';
 
 export function HeroSection({ onOpenVideo }: { onOpenVideo: () => void }) {
   return (
     <section className="relative overflow-hidden bg-white pt-10 pb-16 lg:pt-14 lg:pb-20">
-      {/* Subtle Gig&Co-style ambient glow */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 left-1/2 h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[radial-gradient(circle,rgba(242,193,78,0.18)_0%,rgba(217,232,220,0.22)_45%,transparent_72%)] blur-2xl"
-      />
+      {/* Gig&Co-style Pastel Rainbow Background Blobs */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-24 top-12 h-80 w-80 rounded-full bg-[#E8FD56]/22 blur-3xl" />
+        <div className="absolute -right-24 top-24 h-80 w-80 rounded-full bg-[#9EE7FF]/25 blur-3xl" />
+        <div className="absolute left-1/3 bottom-0 h-72 w-72 rounded-full bg-[#FFD1E3]/22 blur-3xl" />
+      </div>
 
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-        {/* Centered 3-line Headline with Highlight Pills */}
+        {/* Centered 3-line Headline with Pastel Highlight Pills */}
         <h1 className="text-3xl leading-[1.35] font-bold tracking-tight text-[var(--ink)] sm:text-5xl sm:leading-[1.28]">
           ซื้อขายสารกาแฟ{' '}
-          <span className="inline-block rounded-2xl bg-[var(--forest-100)] px-3.5 py-0.5 text-[var(--forest-900)]">
+          <span className="inline-block rounded-2xl bg-[#DDF5E4] px-3.5 py-0.5 text-[var(--forest-900)]">
             โรบัสตาชุมพร
           </span>
           <span className="mt-1 block">
             ในแบบที่{' '}
-            <span className="inline-block rounded-2xl bg-[var(--sky-100)] px-3.5 py-0.5 text-[var(--sky-700)]">
+            <span className="inline-block rounded-2xl bg-[#D4EEFF] px-3.5 py-0.5 text-[#1B4965]">
               ตรวจสอบได้จริง
             </span>
           </span>
           <span className="mt-1 block">
             ผ่าน{' '}
-            <span className="inline-block rounded-2xl bg-[var(--gold)]/55 px-3.5 py-0.5 text-[var(--ink)]">
+            <span className="inline-block rounded-2xl bg-[#FDE7A2] px-3.5 py-0.5 text-[var(--ink)]">
               Robosta
             </span>
           </span>
@@ -35,91 +37,99 @@ export function HeroSection({ onOpenVideo }: { onOpenVideo: () => void }) {
           แพลตฟอร์ม AIoT ที่เชื่อมความชื้นจาก ESP32, เกรดเมล็ดจาก Pi 5 และ AI Agent ไว้ในพาสปอร์ตเดียว
         </p>
 
-        {/* Centered True-Proportion iPhone Mockup (9:19.5 aspect) */}
-        <div className="mt-9 flex justify-center">
-          <div className="flex h-[540px] w-[264px] flex-col rounded-[44px] border-[6px] border-[var(--phone-bezel)] bg-[var(--cream)] p-2.5 shadow-[0_24px_60px_rgba(38,34,28,0.16)] sm:h-[565px] sm:w-[276px]">
-            {/* Status bar + Dynamic Island */}
-            <div className="flex shrink-0 items-center justify-between px-3 pt-1 pb-2 text-[10px] font-semibold text-[var(--ink)]">
-              <span className="rlp-num">09:41</span>
-              <div className="h-4 w-20 rounded-full bg-[var(--phone-bezel)]" />
-              <span className="text-[9px] text-[var(--ink-muted)]">5G</span>
+        {/* Centered iPhone 18 Pro Max Mockup */}
+        <div className="mt-8">
+          <IPhoneProMaxMockup time="9:41" screenBgClass="bg-[#F4F5F7]">
+            {/* App Top Bar (White, Gig&Co phone style) */}
+            <div className="bg-white px-3.5 pt-1 pb-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--forest-900)] text-[var(--parchment)]">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <ellipse cx="12" cy="12" rx="7" ry="10" stroke="currentColor" strokeWidth="2.2" />
+                      <path d="M12 2.5C9.8 7 14.2 17 12 21.5" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                  </span>
+                  <div className="text-left leading-tight">
+                    <div className="text-[9px] text-[#6B7280]">สวัสดีตอนเช้า,</div>
+                    <div className="text-[11px] font-bold text-[#111827]">Robosta แพลตฟอร์ม</div>
+                  </div>
+                </div>
+                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-black/10 text-[#374151]">
+                  <Bell className="h-3.5 w-3.5" />
+                </span>
+              </div>
+
+              {/* Search-style Lot Lookup Bar */}
+              <div className="mt-2.5 flex items-center gap-2 rounded-full border border-black/10 bg-[#F9FAFB] px-3 py-1.5 text-[10px] text-[#6B7280]">
+                <Search className="h-3 w-3 shrink-0" />
+                <span>ค้นหารหัสล็อต หรือแปลงปลูก...</span>
+              </div>
             </div>
 
-            {/* Inner Phone Screen */}
-            <div className="flex flex-1 flex-col justify-between overflow-hidden rounded-[30px] bg-[var(--cream)] px-1.5 pb-1.5 text-left">
-              <div className="space-y-2.5">
-                {/* Header Card */}
-                <div className="rounded-2xl bg-[var(--forest-900)] p-3.5 text-[var(--on-fill)]">
-                  <div className="flex items-center justify-between text-[10px]">
-                    <span className="text-[var(--on-forest)]">LOT PASSPORT</span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-[var(--forest-700)] px-2 py-0.5 font-semibold text-[var(--mint)]">
-                      <CheckCircle2 className="h-2.5 w-2.5" />
-                      ขายแล้ว
-                    </span>
-                  </div>
-                  <div className="rlp-num mt-1.5 text-xl font-bold">{LOT_DATA.lotId}</div>
-                  <div className="mt-0.5 text-[11px] text-[var(--on-forest)]">
-                    {LOT_DATA.weightKg} กก. · {LOT_DATA.origin} · {LOT_DATA.process}
-                  </div>
-                </div>
+            {/* Scrollable-look Feed inside Phone */}
+            <div className="flex-1 space-y-2.5 overflow-hidden px-3 pt-2.5 text-left">
+              <div className="text-[11px] font-bold text-[#111827]">ล็อตที่พร้อมตรวจสอบ</div>
 
-                {/* Moisture Card */}
-                <div className="flex items-center justify-between rounded-2xl bg-white px-3.5 py-2.5 shadow-xs">
-                  <div>
-                    <div className="text-[10px] text-[var(--ink-muted)]">ความชื้น · ESP32</div>
-                    <div className="text-xs font-semibold text-[var(--ink)]">แห้งได้ที่ (≤ 12.5%)</div>
-                  </div>
-                  <span className="rlp-num text-base font-bold text-[var(--forest-700)]">
-                    {LOT_DATA.moistureCurrent}%
+              {/* Highlighted Featured Card */}
+              <div className="rounded-2xl bg-[var(--forest-900)] p-3.5 text-white shadow-sm">
+                <div className="flex items-center justify-between text-[10px]">
+                  <span className="text-[var(--on-forest)]">LOT PASSPORT</span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[var(--forest-700)] px-2 py-0.5 font-semibold text-[var(--mint)]">
+                    <CheckCircle2 className="h-2.5 w-2.5" />
+                    ขายแล้ว
                   </span>
                 </div>
-
-                {/* Vision Card */}
-                <div className="flex items-center justify-between rounded-2xl bg-white px-3.5 py-2.5 shadow-xs">
-                  <div>
-                    <div className="text-[10px] text-[var(--ink-muted)]">เม็ดเสียหลังคัด · Pi 5</div>
-                    <div className="text-xs font-semibold text-[var(--ink)]">
-                      {LOT_DATA.defectAfterPct.toFixed(1)}% · ตรวจ 35 เม็ด
-                    </div>
-                  </div>
-                  <span className="rounded-lg bg-[var(--grade-a)] px-2.5 py-1 text-xs font-bold text-[var(--on-fill)]">
-                    เกรด A
-                  </span>
+                <div className="rlp-num mt-1.5 text-lg font-bold">{LOT_DATA.lotId}</div>
+                <div className="mt-0.5 text-[10px] text-[var(--on-forest)]">
+                  {LOT_DATA.weightKg} กก. · {LOT_DATA.origin} · {LOT_DATA.process}
                 </div>
-
-                {/* AI Agent Deal Card */}
-                <div className="rounded-2xl bg-white p-3 shadow-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--forest-700)]">
-                      <TrendingUp className="h-3 w-3" />
-                      ปิดดีล · AI Agent
-                    </span>
-                    <span className="text-[10px] text-[var(--ink-muted)]">10:53 น.</span>
-                  </div>
-                  <div className="mt-1 flex items-baseline justify-between">
-                    <span className="text-xs font-semibold text-[var(--ink)]">ผู้ส่งออก B · ระยอง</span>
-                    <span className="rlp-num text-sm font-bold text-[var(--forest-700)]">
-                      {LOT_DATA.recommendedPrice} ฿/กก.
-                    </span>
-                  </div>
-                  <div className="mt-0.5 flex items-center justify-between text-[10px] text-[var(--ink-muted)]">
-                    <span>สูงกว่าขั้นต่ำ +4 ฿/กก.</span>
-                    <span className="rlp-num font-semibold text-[var(--ink)]">
-                      รวม {LOT_DATA.totalValue.toLocaleString()} ฿
-                    </span>
-                  </div>
+                <div className="mt-2.5 flex items-center justify-between border-t border-white/15 pt-2 text-[11px]">
+                  <span>ปิดดีล {LOT_DATA.recommendedPrice} ฿/กก.</span>
+                  <span className="rlp-num font-bold text-[var(--gold)]">
+                    {LOT_DATA.totalValue.toLocaleString()} ฿
+                  </span>
                 </div>
               </div>
 
-              {/* Bottom CTA inside Phone + Home Indicator */}
-              <div className="space-y-2 pt-2">
-                <div className="rounded-xl bg-[var(--forest-700)] py-2 text-center text-[11px] font-semibold text-white">
-                  ดูหลักฐานตรวจรับครบวงจร
+              {/* White Telemetry Cards */}
+              <div className="flex items-center justify-between rounded-2xl bg-white px-3.5 py-2.5 shadow-xs">
+                <div>
+                  <div className="text-[10px] text-[#6B7280]">ความชื้น · ESP32</div>
+                  <div className="text-xs font-semibold text-[#111827]">แห้งได้ที่ (≤ 12.5%)</div>
                 </div>
-                <div className="mx-auto h-1 w-24 rounded-full bg-[var(--ink)]/20" />
+                <span className="rlp-num text-base font-bold text-[var(--forest-700)]">
+                  {LOT_DATA.moistureCurrent}%
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between rounded-2xl bg-white px-3.5 py-2.5 shadow-xs">
+                <div>
+                  <div className="text-[10px] text-[#6B7280]">เม็ดเสียหลังคัด · Pi 5</div>
+                  <div className="text-xs font-semibold text-[#111827]">
+                    {LOT_DATA.defectAfterPct.toFixed(1)}% · ตรวจ 35 เม็ด
+                  </div>
+                </div>
+                <span className="rounded-lg bg-[var(--grade-a)] px-2.5 py-1 text-[11px] font-bold text-white">
+                  เกรด A
+                </span>
+              </div>
+
+              <div className="rounded-2xl bg-white p-3 shadow-xs">
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--forest-700)]">
+                    <TrendingUp className="h-3 w-3" />
+                    ผู้ส่งออก B · ระยอง
+                  </span>
+                  <span className="text-[10px] text-[#6B7280]">10:53 น.</span>
+                </div>
+                <div className="mt-1 flex items-center justify-between text-[10px] text-[#6B7280]">
+                  <span>สูงกว่าขั้นต่ำ +4 ฿/กก.</span>
+                  <span className="font-semibold text-[#111827]">นัดรับ 2 พ.ย. 09:00</span>
+                </div>
               </div>
             </div>
-          </div>
+          </IPhoneProMaxMockup>
         </div>
 
         {/* Centered CTA Pill below Phone */}

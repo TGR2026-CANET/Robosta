@@ -14,6 +14,7 @@ import {
   PlusCircle,
 } from 'lucide-react';
 import { EXPLORER_STEPS, LOT_DATA } from '../data/lotDemoData';
+import { IPhoneProMaxMockup } from './IPhoneProMaxMockup';
 
 function PhoneScreen({
   stepId,
@@ -27,33 +28,30 @@ function PhoneScreen({
   onToggleConsent: () => void;
 }) {
   const isChatScreen = stepId === 6;
+  const time =
+    stepId === 1
+      ? '07:30'
+      : stepId === 2
+        ? '07:31'
+        : stepId === 3
+          ? '09:12'
+          : stepId === 4
+            ? '10:20'
+            : stepId === 5
+              ? '10:40'
+              : stepId === 6
+                ? '10:53'
+                : '10:55';
 
   return (
-    <div className="relative mx-auto flex h-[565px] w-[272px] flex-col overflow-hidden rounded-[44px] border-[6px] border-[var(--phone-bezel)] bg-[var(--cream)] shadow-[0_24px_60px_rgba(38,34,28,0.16)]">
-      {/* Status Bar + Dynamic Island */}
-      <div className="flex shrink-0 items-center justify-between bg-[var(--card)] px-4 pt-2 pb-1.5 text-[10px] font-semibold text-[var(--ink)]">
-        <span className="rlp-num">
-          {stepId === 1
-            ? '07:30'
-            : stepId === 2
-              ? '07:31'
-              : stepId === 3
-                ? '09:12'
-                : stepId === 4
-                  ? '10:20'
-                  : stepId === 5
-                    ? '10:40'
-                    : stepId === 6
-                      ? '10:53'
-                      : '10:55'}
-        </span>
-        <div className="h-4 w-20 rounded-full bg-[var(--phone-bezel)]" />
-        <span className="text-[9px] text-[var(--ink-muted)]">5G</span>
-      </div>
-
+    <IPhoneProMaxMockup
+      time={time}
+      screenBgClass={isChatScreen ? 'bg-[var(--line-chat)]' : 'bg-[#F4F5F7]'}
+      showRainbowAura={false}
+    >
       {/* LIFF / LINE OA Header */}
       {isChatScreen ? (
-        <div className="flex items-center justify-between border-b border-[var(--divider)] bg-[var(--card)] px-4 py-2.5">
+        <div className="flex shrink-0 items-center justify-between border-b border-black/[0.06] bg-white px-4 py-2.5">
           <div className="flex items-center gap-2">
             <ChevronLeft className="h-4 w-4 text-[var(--ink)]" />
             <span className="text-sm font-semibold text-[var(--ink)]">Robosta</span>
@@ -63,7 +61,7 @@ function PhoneScreen({
           </span>
         </div>
       ) : (
-        <div className="border-b border-[var(--divider)] bg-[var(--card)] px-4 py-2 text-center">
+        <div className="shrink-0 border-b border-black/[0.06] bg-white px-4 py-2 text-center">
           <div className="text-sm font-semibold text-[var(--ink)]">
             {stepId === 1
               ? 'เพิ่มล็อตใหม่'
@@ -82,7 +80,7 @@ function PhoneScreen({
       {/* Screen Body */}
       <div
         className={`flex-1 overflow-y-auto p-3 ${
-          isChatScreen ? 'bg-[var(--line-chat)]' : 'bg-[var(--cream)]'
+          isChatScreen ? 'bg-[var(--line-chat)]' : 'bg-[#F4F5F7]'
         }`}
       >
         {stepId === 1 && (
@@ -446,7 +444,7 @@ function PhoneScreen({
           </div>
         )}
       </div>
-    </div>
+    </IPhoneProMaxMockup>
   );
 }
 
@@ -488,9 +486,13 @@ export function InteractiveExplorerSection() {
   return (
     <section
       id="features"
-      className="border-t border-black/[0.06] bg-white py-16 md:py-24"
+      className="relative overflow-hidden border-t border-black/[0.06] bg-white py-16 md:py-24"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-24 top-1/3 h-80 w-80 rounded-full bg-[#D4EEFF]/35 blur-3xl" />
+        <div className="absolute -right-24 bottom-12 h-80 w-80 rounded-full bg-[#FDE7A2]/30 blur-3xl" />
+      </div>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <span className="inline-block rounded-full bg-[var(--stage-amber)] px-3.5 py-1 text-xs font-semibold text-[var(--on-amber)]">
