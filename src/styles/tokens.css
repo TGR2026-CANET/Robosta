@@ -1,0 +1,234 @@
+/* Robusta Lot Passport — generated from tokens.json */
+:root, [data-theme="light"] {
+  --cream: #faf6ee; /* พื้นหลังทุกหน้าในแอป LIFF: ครีมสว่างอุ่น ลดแสงจ้าเมื่อเทียบกับพื้นขาวล้วน */
+  --card: #fffdf9; /* การ์ด แถบเมนูล่าง ช่องกรอก แถบ LIFF หัวแชท และ Flex bubble (ขาวอุ่น) */
+  --wash: #f6f0e5; /* แถวย่อยในการ์ด เช่น ช่องยินยอม แถวราคาย่อย */
+  --card-line: #ece4d4; /* เส้นขอบการ์ด (ตกแต่ง ไม่ใช่ขอบปุ่มหรือช่องกรอก) */
+  --divider: #e6dfd0; /* เส้นแบ่งแถบเมนูล่าง แถบ LIFF และแถวรายการ */
+  --field-line: #8a8170; /* ขอบช่องกรอก ปุ่มตัวเลือก ปุ่ม stepper และวงกลมขั้นตอนที่ยังไม่ถึง: 3.7:1 บน `card`, 3.5:1 บน `cream`, 3.3:1 บน `wash` */
+  --neutral-100: #efeae0; /* การ์ดขั้นตอนที่ยังไม่ถึง และหัว Flex แบบกลาง (ขายไม่สำเร็จ) ใต้ตัวอักษร `ink` */
+  --disabled: #dfd9cc; /* ปุ่มที่ยังกดไม่ได้ ตัวอักษรบนสีนี้ใช้ `ink-muted` */
+  --ink: #26221c; /* ตัวอักษรหลักบน `cream` `card` `wash` และพื้นอ่อนทุกสี (≥13.0:1) บน `line-chat` (8.1:1) บน `line-green` (7.0:1) และบน `gold` (9.4:1) น้ำตาลเข้มแทนดำล้วนเพื่อให้อ่านนานได้สบายตา */
+  --ink-muted: #615a4e; /* ตัวอักษรรอง เวลา หน่วย บน `cream` `card` `wash` `neutral-100` (≥5.6:1) ห้ามใช้บน `line-chat` (3.5:1) */
+  --on-fill: #ffffff; /* ตัวอักษรและไอคอนบนพื้นทึบ `forest-900` `forest-700` `roast` `amber-700` และสีเกรด (≥5.4:1) */
+  --forest-900: #1e4630; /* หัวหน้าจอแอป ริชเมนู LINE และวงกลมโลโก้ OA */
+  --forest-700: #2c6144; /* ปุ่มหลัก สถานะสำเร็จ แท็บที่เลือก ขั้นตอนเสร็จแล้ว; เป็นตัวอักษรบน `card` `cream` `forest-100` (≥6.3:1) และเป็นเส้น/ป้าย “ตกลง” บนเวที (≥6.2:1) */
+  --forest-300: #9cbba5; /* ขอบการ์ดขั้นตอนปัจจุบันและแถวที่เพิ่งเพิ่ม (ตกแต่ง 2.0:1 บน `card` สถานะต้องมีคำกำกับเสมอ) */
+  --forest-200: #d9e8dc; /* วงแหวนรอบจุดขั้นตอนปัจจุบัน และกรอบเรืองของรายการใหม่ */
+  --forest-100: #ebf3ec; /* พื้นคำแนะนำ แถวที่เลือก และโน้ตการขาย ใต้ตัวอักษร `ink` หรือ `forest-700` */
+  --forest-050: #f5f9f1; /* พื้นการ์ดขั้นตอนปัจจุบัน */
+  --on-forest: #d2e8d8; /* ตัวอักษรรองบน `forest-900` (8.2:1) `roast` (7.7:1) และ `forest-700` (5.6:1) */
+  --mint: #bfe5cb; /* เครื่องหมายเสร็จแล้วและไอคอนริชเมนูบนพื้นมืด (`forest-900` 7.7:1, `roast` 7.3:1, `forest-700` 5.2:1) ห้ามใช้บนพื้นสว่างหรือบนเวที */
+  --chart-target: #dcecdd; /* โซน “แห้งได้ที่” ใต้เส้นเป้าหมาย 12.5% ในกราฟความชื้น */
+  --parchment: #ebdab4; /* ลายเมล็ดกาแฟตกแต่งบนหัว `forest-900` ที่ความทึบ 18% และเมล็ดในโลโก้ OA */
+  --glass: rgba(255, 255, 255, 0.14); /* ชิปและช่องตัวเลขบนพื้นมืด (`forest-900`, `roast`) */
+  --glass-strong: rgba(255, 255, 255, 0.22); /* รางแถบความคืบหน้าบนพื้นมืด */
+  --roast: #5a3b28; /* การ์ดสถานะที่กำลังทำงาน: นับถอยหลังการตาก แจ้งผลสแกนสด การขายที่กำลังดำเนิน */
+  --bronze: #b07316; /* เส้นและพื้นกราฟคาดการณ์ แถบเม็ดเสีย (เครื่องหมาย 3.8:1 บน `card` ห้ามใช้เป็นตัวอักษร) */
+  --bronze-700: #8a4f0e; /* เส้นกราฟความชื้นที่วัดจริงและจุดข้อมูล */
+  --gold: #f2c14e; /* ขั้นปัจจุบันบนพื้นมืด จุดต้นแถบความคืบหน้า และหัว Flex แจ้งเตือน (ตัวอักษร `ink` บนสีนี้ 9.4:1) */
+  --amber-700: #9a4a12; /* ข้อความเตือน (ฝน ต่ำไป ขายไม่ได้) และเกรด C; บน `card` `cream` `amber-100` (≥5.2:1) */
+  --amber-100: #f8e9da; /* พื้นหลังข้อความเตือนและสถานะ “ตาก + อบ” */
+  --sun-700: #855600; /* สถานะตากแดด บน `sun-100` (5.5:1) และ `card` */
+  --sun-100: #fbf0cc; /* พื้นสถานะตากแดด */
+  --fire-700: #b3261e; /* สถานะอบ ตัวเลขเม็ดเสีย และป้ายนับแจ้งเตือน บน `fire-100` (5.3:1) และ `card` */
+  --fire-100: #fbe4e0; /* พื้นสถานะอบและเม็ดเสีย */
+  --teal-700: #0c6b63; /* สถานะพร้อมขาย / กำลังขาย บน `teal-100` (5.3:1) และ `card` */
+  --teal-100: #d8f0eb; /* พื้นสถานะพร้อมขาย / กำลังขาย */
+  --sky-700: #2a5578; /* สถานะพร้อมคัดเกรด กำลังตรวจ และป้าย “คำอธิบายโดย AI ในเครื่อง” บน `sky-100` (6.5:1) และ `card` */
+  --sky-100: #e3ecf4; /* พื้นสถานะพร้อมคัดเกรดและข้อมูลประกอบ */
+  --grade-a: var(--forest-700); /* ป้ายเกรด A (ตัวอักษร `on-fill`) */
+  --grade-b: #3f6e8c; /* ป้ายเกรด B (ตัวอักษร `on-fill` 5.5:1) */
+  --grade-c: var(--amber-700); /* ป้ายเกรด C (ตัวอักษร `on-fill`) */
+  --grade-d: #625e55; /* ป้ายเกรด D (ตัวอักษร `on-fill` 6.5:1) */
+  --bean-good: #5ccf7a; /* กรอบเมล็ดดีบนภาพกล้อง (`tray` 8.2:1) และจุดสีหน้าคำ “ดี” ห้ามใช้เป็นตัวอักษรบนพื้นสว่าง */
+  --bean-broken: #f0b429; /* กรอบเมล็ดแตกบนภาพกล้อง (8.7:1) และจุดสีหน้าคำ “แตก” */
+  --bean-immature: #b98ee8; /* กรอบเมล็ดไม่สุกบนภาพกล้อง (6.3:1) และจุดสีหน้าคำ “ไม่สุก” */
+  --bean-black: #ef5a5a; /* กรอบเมล็ดดำบนภาพกล้อง (4.9:1) และจุดสีหน้าคำ “ดำ” */
+  --tray: #23201c; /* พื้นถาดในภาพกล้องและภาพย่อเม็ดเสีย */
+  --bean-raw: #a7a57c; /* สีสารกาแฟดิบในภาพประกอบ */
+  --bean-raw-dark: #6f6e50; /* ร่องกลางเมล็ดและขอบรอยแตกในภาพประกอบ */
+  --bean-pale: #d6cfa0; /* เมล็ดไม่สุกในภาพประกอบ */
+  --bean-dark: #2e2925; /* เมล็ดดำในภาพประกอบ */
+  --bean-roasted: #6b3f22; /* เมล็ดคั่วในพลุฉลองขายสำเร็จ */
+  --line-chat: #a6bcdc; /* พื้นห้องแชท LINE ข้อความบนพื้นนี้ใช้ `ink` เท่านั้น (8.1:1) */
+  --line-green: #06c755; /* ปุ่มหลักในแชท LINE และป้ายข้อความใหม่ ตัวอักษรบนสีนี้ใช้ `ink` (7.0:1) — ตัวอักษรขาวได้แค่ 2.3:1 ห้ามใช้ */
+  --chat-chip: rgba(255, 255, 255, 0.72); /* ป้ายวันที่ในห้องแชท ใต้ตัวอักษร `ink` */
+  --scrim: rgba(38, 34, 28, 0.42); /* ฉากมืดหลัง bottom sheet */
+  --stage-900: #f4eddf; /* พื้นเวทีเดโมชั้นนอก (ครีมสว่าง) และตัวอักษรบน `stage-amber` กับ `stage-ink` (5.4:1 / 13.5:1) */
+  --stage-700: #fffbf3; /* พื้นเวทีชั้นใน (กลางภาพ) การ์ดบนเวที ปุ่มควบคุม และโหนดแผนผังระบบ */
+  --stage-500: #e3d8c3; /* เส้นแบ่ง เส้นเชื่อมที่ยังไม่ทำงาน และพื้นชิปรองบนเวที (ตกแต่ง; ขอบของปุ่มที่กดได้ใช้ `stage-muted`) ตัวอักษร `stage-ink` บนสีนี้ 11.1:1 */
+  --stage-ink: #2a2118; /* ข้อความบนเวที บน `stage-900` `stage-700` `stage-500` (≥11.1:1) */
+  --stage-muted: #5f5342; /* ข้อความรองบนเวที เช่น “* ข้อมูลจำลองเพื่อสาธิต” (≥5.3:1 บนพื้นเวทีทุกชั้น) และขอบปุ่มควบคุม (≥6.4:1) */
+  --stage-amber: #8f500c; /* ชิปขั้นตอน เส้นเชื่อมที่ทำงาน และปุ่มเล่นเดโม (คาราเมลเข้ม); เป็นตัวอักษรบน `stage-900` (5.4:1) และ `stage-700` (6.1:1) */
+  --on-amber: var(--stage-900); /* ตัวอักษรบน `stage-amber` (5.4:1) */
+  --phone-bezel: #0e0b09; /* กรอบโทรศัพท์และ Dynamic Island (ตัดกับพื้นเวทีครีม 16.8:1) */
+  --term-900: #16181b; /* พื้นหน้าต่าง Vision Node (Demo A): หน้าต่างมืดบนเวทีสว่าง ให้ภาพกล้องและกรอบสีเมล็ดเด่น */
+  --term-800: #202328; /* แถบชื่อหน้าต่าง Vision Node */
+  --term-700: #24272c; /* แผงผลลัพธ์ในหน้าต่าง Vision Node */
+  --term-line: #33373e; /* เส้นขอบในหน้าต่าง Vision Node */
+  --term-ink: #e8e6e1; /* ข้อความหลักบน `term-900` `term-700` (≥12:1) */
+  --term-muted: #a3a7ae; /* ข้อความรองบน `term-900` `term-800` `term-700` (≥6.2:1) */
+  --term-ok: #7ee2a0; /* สถานะเชื่อมต่อ MQTT และ “ส่งแล้ว” บน `term-700` (9.5:1) */
+  --scan: #7fe6ff; /* เส้นสแกนที่กวาดผ่านภาพกล้อง */
+  --live: #ff5a4e; /* จุดกระพริบ LIVE และ “กำลังขาย” (มีคำกำกับเสมอ) */
+  --shadow-card: 0 1px 2px rgba(74, 52, 30, 0.05), 0 6px 20px rgba(74, 52, 30, 0.06); /* การ์ดทุกใบ */
+  --shadow-float: 0 12px 32px rgba(74, 52, 30, 0.16); /* การ์ดที่ลอยทับหัวหน้าจอ และการแจ้งเตือนที่หล่นลงมา */
+  --shadow-primary: 0 8px 20px rgba(44, 97, 68, 0.24); /* ปุ่มหลัก `forest-700` */
+  --shadow-sheet: 0 -12px 36px rgba(74, 52, 30, 0.16); /* bottom sheet */
+  --shadow-phone: 0 40px 80px rgba(74, 52, 30, 0.22), 0 8px 20px rgba(74, 52, 30, 0.10), 0 0 0 1px rgba(38, 34, 28, 0.08); /* กรอบโทรศัพท์บนเวที (เงาอุ่นนุ่มบนพื้นครีม) */
+  --focus-ring: 0 0 0 3px #fffdf9, 0 0 0 6px #2c6144; /* โฟกัสคีย์บอร์ด: ช่องสี `card` 3px แล้ววง `forest-700` 3px (≥6.3:1 บนพื้นสว่างทุกสี) */
+}
+:root {
+  --space-1: 4px; /* ระหว่างไอคอนกับคำในชิป */
+  --space-2: 8px; /* ภายในปุ่มและระหว่างตัวเลือก */
+  --space-3: 12px; /* ระหว่างแถวที่เกี่ยวข้องกันในการ์ด */
+  --gap-card: 14px; /* ระหว่างการ์ดในหน้าจอ */
+  --space-4: 16px; /* ระยะในการ์ดและขอบซ้ายขวาของหน้าจอ */
+  --space-5: 20px; /* ระยะในหัวหน้าจอ */
+  --space-6: 24px; /* ระหว่างกลุ่มเนื้อหาใหญ่ */
+  --space-8: 32px; /* ระหว่างส่วนบนเวที */
+  --radius-sm: 12px; /* ช่องกรอก ปุ่ม stepper ปุ่มใน Flex ไอคอนแถว */
+  --radius-md: 16px; /* ปุ่มหลัก ตัวเลือก ช่องย่อย */
+  --radius-lg: 20px; /* Flex bubble การ์ดรายการล็อต ช่องตัวเลข */
+  --radius-xl: 22px; /* การ์ดในหน้าจอ */
+  --radius-2xl: 26px; /* การ์ดสถานะใหญ่ (นับถอยหลัง กำลังขาย) */
+  --radius-sheet: 28px; /* มุมบนของ bottom sheet */
+  --radius-header: 28px; /* มุมล่างของหัว `forest-900` */
+  --radius-phone: 58px; /* กรอบโทรศัพท์บนเวที */
+  --radius-full: 999px; /* ชิป ป้ายสถานะ จุด */
+  --tap-min: 48px; /* พื้นที่กดเล็กที่สุดของทุกปุ่ม */
+  --tap-lg: 56px; /* ปุ่มหลักและแถวตัวเลือก */
+  --phone-w: 390px; /* ความกว้างจอโทรศัพท์ (logical) */
+  --phone-h: 844px; /* ความสูงจอโทรศัพท์ (logical) */
+  --dur-tap: 140ms; /* นิ้วกดลงก่อนหน้าจอตอบสนอง */
+  --dur-slide: 450ms; /* LIFF เลื่อนขึ้น/ลง และเปลี่ยนหน้า */
+  --dur-pop: 600ms; /* Flex bubble และป้ายเกรดเด้งเข้า */
+  --dur-count: 900ms; /* ตัวเลขนับขึ้น */
+  --dur-draw: 1200ms; /* กราฟวาดจากซ้ายไปขวา */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* การเลื่อนหน้าและ sheet */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1); /* ของที่เข้ามาใหม่ เช่น บรรทัดบันทึก แถบความคืบหน้า */
+  --ease-spring: cubic-bezier(0.2, 1.4, 0.4, 1); /* การเด้งของ Flex bubble ป้ายเกรด และเครื่องหมายถูก */
+  --font-sans: "Kanit", "Prompt", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --text-number-xl: 700 56px/60px var(--font-sans); /* ตัวเลขผลลัพธ์ใหญ่ที่สุดหนึ่งตัวต่อหน้าจอ เช่น เงินที่ขายได้ ราคาแนะนำ */
+  --text-number-lg: 700 40px/46px var(--font-sans); /* ตัวเลขสำคัญในการ์ด: ความชื้น เม็ดเสีย ข้อเสนอดีที่สุด */
+  --text-number-md: 700 28px/34px var(--font-sans); /* ตัวเลขในช่องย่อยและตัวอักษรเกรด */
+  --text-title: 600 26px/34px var(--font-sans); /* ชื่อหน้าบนหัว `forest-900` และหัว bottom sheet */
+  --text-heading: 600 18px/26px var(--font-sans); /* หัวข้อการ์ดและข้อความบนปุ่มหลัก */
+  --text-body-lg: 500 17px/26px var(--font-sans); /* ข้อความในแถวรายการ ตัวเลือก และ Flex */
+  --text-body: 400 16px/24px var(--font-sans); /* เนื้อความทั่วไป ห้ามเล็กกว่านี้สำหรับประโยค */
+  --text-label: 500 15px/22px var(--font-sans); /* ป้ายสถานะ ชิป และคำอธิบายใต้ตัวเลข */
+  --text-caption: 400 14px/20px var(--font-sans); /* เวลา ป้ายแท็บ แกนกราฟ (ไม่ใช้กับประโยค) */
+  --text-micro: 500 11px/14px var(--font-sans); /* ป้ายเล็กใต้ชื่อหน้าบนแถบ LIFF เท่านั้น */
+  --text-stage-display: 700 88px/92px var(--font-sans); /* ชื่อผลิตภัณฑ์บนการ์ดปิดท้าย */
+  --text-stage-caption: 600 44px/62px var(--font-sans); /* คำบรรยายฉากหนึ่งบรรทัด (ไม่เกินสองบรรทัด) */
+  --text-stage-chip: 600 22px/30px var(--font-sans); /* ชิปขั้นตอนและรายการขั้นตอนด้านซ้าย */
+  --text-stage-note: 400 18px/26px var(--font-sans); /* ข้อความรองบนเวที ป้ายภาพฮาร์ดแวร์ และปุ่มควบคุม */
+  --text-code: 400 13px/20px var(--font-mono); /* ข้อความในหน้าต่าง Vision Node: topic MQTT, payload, ป้ายคลาส */
+}
+.number-xl {
+  font-family: var(--font-sans);
+  font-size: 56px;
+  line-height: 60px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.number-lg {
+  font-family: var(--font-sans);
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.number-md {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.title {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.heading {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.body-lg {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 26px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.caption {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.micro {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.stage-display {
+  font-family: var(--font-sans);
+  font-size: 88px;
+  line-height: 92px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.stage-caption {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 62px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.stage-chip {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.stage-note {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
