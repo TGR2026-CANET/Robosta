@@ -161,18 +161,18 @@ export function LiffMiniApp() {
               ? 'ประเมินราคา'
               : 'ประวัติการขาย';
 
-  const handleCloseLiff = () => {
-    const win = window as unknown as { liff?: { isInClient?: () => boolean; closeWindow?: () => void } };
-    if (win.liff?.isInClient?.() && win.liff.closeWindow) {
-      win.liff.closeWindow();
+  const isSubView = view === 'add' || view === 'moisture' || view === 'scan';
+
+  const handleTopLeftNav = () => {
+    if (view === 'scan') {
+      setView('moisture');
       return;
     }
-    window.close();
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = '/';
+    if (view === 'moisture' || view === 'add') {
+      setView('lots');
+      return;
     }
+    window.location.assign('/');
   };
 
   return (
@@ -182,11 +182,11 @@ export function LiffMiniApp() {
         <header className="sticky top-0 z-20 flex items-center justify-between border-b border-[var(--divider)] bg-[var(--card)] px-4 py-3">
           <button
             type="button"
-            onClick={handleCloseLiff}
+            onClick={handleTopLeftNav}
             className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-[var(--ink)] hover:bg-[var(--wash)]"
-            aria-label="ปิดหน้าต่าง"
+            aria-label={isSubView ? 'ย้อนกลับ' : 'กลับหน้าหลัก Robosta'}
           >
-            <X className="h-5 w-5" />
+            {isSubView ? <ChevronLeft className="h-5 w-5" /> : <X className="h-5 w-5" />}
           </button>
           <div className="text-center">
             <div className="text-base font-semibold text-[var(--ink)]">{headerTitle}</div>
