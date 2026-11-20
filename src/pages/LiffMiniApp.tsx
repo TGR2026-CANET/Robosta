@@ -90,6 +90,23 @@ export function LiffMiniApp() {
   const [floorPrice, setFloorPrice] = useState(LOT_DATA.floorPrice);
   const [consentChecked, setConsentChecked] = useState(false);
   const [agentStep, setAgentStep] = useState<'idle' | 'negotiating' | 'sold'>('idle');
+  const [lineToast, setLineToast] = useState<string | null>(null);
+
+  const notifyLine = async (payload: Record<string, unknown>) => {
+    try {
+      const res = await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        setLineToast('ส่งแจ้งเตือนเข้าแชท LINE แล้ว ✓');
+        window.setTimeout(() => setLineToast(null), 3000);
+      }
+    } catch {
+      // Offline / local dev without serverless runtime
+    }
+  };
 
   const activeLot = lots.find((l) => l.id === selectedLotId) ?? lots[0];
 
@@ -117,6 +134,13 @@ export function LiffMiniApp() {
     setLots((prev) => [newLot, ...prev]);
     setSelectedLotId(newLot.id);
     setView('moisture');
+    void notifyLine({
+      event: 'lot_created',
+      lotId: newLot.id,
+      weightKg: newLot.weightKg,
+      process: newLot.process,
+      sensor: newLot.sensor,
+    });
   };
 
   const handleSimulateDryDone = () => {
@@ -125,6 +149,22 @@ export function LiffMiniApp() {
         l.id === activeLot.id ? { ...l, moisture: 11.8, status: 'พร้อมคัดเกรด' } : l
       )
     );
+    void notifyLine({
+      event: 'dry_ready',
+      lotId: activeLot.id,
+      moisture: 11.8,
+    });
+  };
+
+  const handleSimulateRainAlert = () => {
+    setLots((prev) =>
+      prev.map((l) => (l.id === activeLot.id ? { ...l, moisture: 13.4 } : l))
+    );
+    void notifyLine({
+      event: 'rain_alert',
+      lotId: activeLot.id,
+      moisture: 13.4,
+    });
   };
 
   const handleStartAgentSell = () => {
@@ -132,6 +172,7 @@ export function LiffMiniApp() {
     setAgentStep('negotiating');
     window.setTimeout(() => {
       setAgentStep('sold');
+      const total = LOT_DATA.recommendedPrice * activeLot.weightKg;
       setLots((prev) =>
         prev.map((l) =>
           l.id === activeLot.id
@@ -139,12 +180,21 @@ export function LiffMiniApp() {
                 ...l,
                 status: 'ขายแล้ว',
                 soldPricePerKg: LOT_DATA.recommendedPrice,
-                soldTotal: LOT_DATA.recommendedPrice * l.weightKg,
+                soldTotal: total,
                 buyer: 'ผู้ส่งออก B',
               }
             : l
         )
       );
+      void notifyLine({
+        event: 'deal_sold',
+        lotId: activeLot.id,
+        weightKg: activeLot.weightKg,
+        pricePerKg: LOT_DATA.recommendedPrice,
+        floorPrice,
+        totalValue: total,
+        buyer: 'ผู้ส่งออก B',
+      });
     }, 1600);
   };
 
@@ -388,13 +438,22 @@ export function LiffMiniApp() {
               </div>
 
               {activeLot.moisture > 12.5 && (
-                <button
-                  type="button"
-                  onClick={handleSimulateDryDone}
-                  className="w-full cursor-pointer rounded-2xl border border-[var(--forest-700)] bg-[var(--forest-050)] py-3 text-sm font-semibold text-[var(--forest-700)]"
-                >
-                  จำลองเซนเซอร์ ESP32 วัดได้ 11.8% (แห้งได้ที่)
-                </button>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={handleSimulateRainAlert}
+                    className="cursor-pointer rounded-2xl border border-[var(--amber-700)]/40 bg-[var(--amber-100)] px-3 py-3 text-xs font-semibold text-[var(--amber-700)]"
+                  >
+                    จำลองเตือนฝน (13.4%)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleSimulateDryDone}
+                    className="cursor-pointer rounded-2xl border border-[var(--forest-700)] bg-[var(--forest-050)] px-3 py-3 text-xs font-semibold text-[var(--forest-700)]"
+                  >
+                    จำลองแห้งได้ที่ (11.8%)
+                  </button>
+                </div>
               )}
 
               <div className="rounded-[22px] border border-[var(--card-line)] bg-[var(--card)] p-4">
@@ -582,6 +641,26 @@ export function LiffMiniApp() {
                   <div className="mt-1 text-xs text-[var(--ink-muted)]">
                     120 ฿/กก. · สูงกว่าขั้นต่ำ +{120 - floorPrice} ฿/กก.
                   </div>
+                  <div className="mt-3 space-y-1.5 rounded-xl bg-white p-3 text-xs">
+                    {LOT_DATA.offers.map((offer) => (
+                      <div key={offer.buyer} className="flex items-center justify-between">
+                        <span className="text-[var(--ink)]">
+                          {offer.buyer} ({offer.location})
+                        </span>
+                        <span
+                          className={`rlp-num font-semibold ${
+                            offer.status === 'accepted'
+                              ? 'text-[var(--forest-700)]'
+                              : offer.status === 'rejected'
+                                ? 'text-[var(--amber-700)]'
+                                : 'text-[var(--ink-muted)]'
+                          }`}
+                        >
+                          {offer.price} ฿ · {offer.note}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                   <button
                     type="button"
                     onClick={() => setView('history')}
@@ -691,6 +770,13 @@ export function LiffMiniApp() {
                 {consentChecked ? '✓ ยืนยัน เริ่มขาย' : 'ติ๊กยินยอมก่อน'}
               </button>
             </div>
+          </div>
+        )}
+
+        {/* LINE Push Toast */}
+        {lineToast && (
+          <div className="pointer-events-none fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-[var(--forest-900)] px-4 py-2 text-xs font-semibold text-white shadow-lg">
+            {lineToast}
           </div>
         )}
 
