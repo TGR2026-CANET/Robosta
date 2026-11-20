@@ -1,3 +1,5 @@
+declare const process: { env: Record<string, string | undefined> };
+
 const LINE_PUSH_URL = 'https://api.line.me/v2/bot/message/push';
 
 interface NotifyPayload {
