@@ -8,9 +8,16 @@ import { HowItWorksSection } from './components/HowItWorksSection';
 import { FaqSection } from './components/FaqSection';
 import { B2BCtaFooter } from './components/B2BCtaFooter';
 import { VideoModal } from './components/VideoModal';
+import { LiffMiniApp } from './pages/LiffMiniApp';
 
 export function App() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const isLiffRoute =
+    typeof window !== 'undefined' && window.location.pathname.startsWith('/liff');
+
+  if (isLiffRoute) {
+    return <LiffMiniApp />;
+  }
 
   return (
     <div className="min-h-screen bg-white text-[var(--ink)]">
