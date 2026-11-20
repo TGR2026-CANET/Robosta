@@ -39,13 +39,27 @@ export function Navbar() {
           </a>
         </nav>
 
-        {/* Right: Single Clean CTA */}
-        <a
-          href="#features"
-          className="inline-flex items-center rounded-full bg-[var(--forest-700)] px-5 py-2.5 text-sm font-semibold text-[var(--on-fill)] transition-colors hover:bg-[var(--forest-900)]"
-        >
-          สำรวจเดโม
-        </a>
+        {/* Right: Clean CTAs */}
+        <div className="flex items-center gap-2">
+          <a
+            href="https://line.me/R/ti/p/@617gzopa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-[var(--line-green)] px-4 py-2 text-sm font-semibold text-[var(--ink)] transition-transform hover:scale-[1.02]"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 5.93 2 10.78c0 4.34 3.55 7.97 8.34 8.66.32.07.76.22.87.5.1.25.06.64.03.9l-.14.84c-.04.25-.2.99.87.54 1.07-.45 5.77-3.4 7.87-5.82C21.29 14.81 22 12.91 22 10.78 22 5.93 17.52 2 12 2Zm-3.65 11.4H6.11a.56.56 0 0 1-.56-.56V8.36a.56.56 0 1 1 1.12 0v3.92h1.68a.56.56 0 1 1 0 1.12Zm2.03-.56a.56.56 0 1 1-1.12 0V8.36a.56.56 0 1 1 1.12 0v4.48Zm4.7 0a.56.56 0 0 1-.39.53.54.54 0 0 1-.62-.19l-2.3-3.13v2.79a.56.56 0 1 1-1.12 0V8.36a.56.56 0 0 1 1.01-.33l2.3 3.13V8.36a.56.56 0 1 1 1.12 0v4.48Zm3.38-2.8a.56.56 0 1 1 0 1.12h-1.68v1.12h1.68a.56.56 0 1 1 0 1.12h-2.24a.56.56 0 0 1-.56-.56V8.36c0-.31.25-.56.56-.56h2.24a.56.56 0 1 1 0 1.12h-1.68v1.12h1.68Z" />
+            </svg>
+            <span className="hidden sm:inline">เพิ่มเพื่อน LINE</span>
+            <span className="sm:hidden">LINE</span>
+          </a>
+          <a
+            href="#features"
+            className="inline-flex items-center rounded-full bg-[var(--forest-700)] px-4 py-2 text-sm font-semibold text-[var(--on-fill)] transition-colors hover:bg-[var(--forest-900)] sm:px-5 sm:py-2.5"
+          >
+            สำรวจเดโม
+          </a>
+        </div>
       </div>
     </header>
   );
