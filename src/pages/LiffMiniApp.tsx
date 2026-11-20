@@ -161,18 +161,33 @@ export function LiffMiniApp() {
               ? 'ประเมินราคา'
               : 'ประวัติการขาย';
 
+  const handleCloseLiff = () => {
+    const win = window as unknown as { liff?: { isInClient?: () => boolean; closeWindow?: () => void } };
+    if (win.liff?.isInClient?.() && win.liff.closeWindow) {
+      win.liff.closeWindow();
+      return;
+    }
+    window.close();
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = '/';
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#EEF0F3] sm:py-6">
       <div className="relative mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-[var(--cream)] shadow-2xl sm:min-h-[844px] sm:overflow-hidden sm:rounded-[36px] sm:border-[6px] sm:border-[var(--phone-bezel)]">
         {/* LIFF Top Bar */}
         <header className="sticky top-0 z-20 flex items-center justify-between border-b border-[var(--divider)] bg-[var(--card)] px-4 py-3">
-          <a
-            href="/"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--ink)] hover:bg-[var(--wash)]"
-            aria-label="กลับหน้าแรก"
+          <button
+            type="button"
+            onClick={handleCloseLiff}
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-[var(--ink)] hover:bg-[var(--wash)]"
+            aria-label="ปิดหน้าต่าง"
           >
             <X className="h-5 w-5" />
-          </a>
+          </button>
           <div className="text-center">
             <div className="text-base font-semibold text-[var(--ink)]">{headerTitle}</div>
             <div className="text-[10px] font-medium tracking-wider text-[var(--ink-muted)]">
